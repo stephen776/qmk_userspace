@@ -1,6 +1,7 @@
 {
-    "userspace_version": "1.0",
+    "userspace_version": "1.1",
     "build_targets": [
-        ["kprepublic/jj50/rev1", "steetyj"]
+        ["kprepublic/jj50/rev1", "steetyj"],
+        ["keebio/iris_lm/k1", "steetyj"]
     ]
 }
