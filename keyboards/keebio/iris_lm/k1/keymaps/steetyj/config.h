@@ -3,9 +3,9 @@
 
 // RGB Configuration
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
-#define RGB_MATRIX_DEFAULT_HUE 170    // Light blue hue (0-255)
-#define RGB_MATRIX_DEFAULT_SAT 180    // Saturation
-#define RGB_MATRIX_DEFAULT_VAL 128    // 50% brightness (0-255)
+#define RGB_MATRIX_DEFAULT_HUE 193    // Light blue hue (0-255)
+#define RGB_MATRIX_DEFAULT_SAT 100    // Saturation
+#define RGB_MATRIX_DEFAULT_VAL 100    // 50% brightness (0-255)
 #define RGB_MATRIX_DEFAULT_SPD 0      // No animation speed needed
 
 // Disable animations to save space/power
