@@ -17,12 +17,17 @@ enum custom_layers {
 #define UPR_ENT LT(_UPPER, KC_ENT)
 #define SCRN_SHOT LCTL(LSFT(LGUI(KC_4)))
 
+#define TAB_NEXT  LCTL(KC_TAB)
+#define TAB_PREV  LCTL(LSFT(KC_TAB))
+
 // Define homerow mod keys
 #define HRM_A LSFT_T(KC_A)    // A - Left Shift
 #define HRM_R LCTL_T(KC_R)    // R - Left Ctrl
 #define HRM_S LALT_T(KC_S)    // S - Left Alt
 #define HRM_T LGUI_T(KC_T)    // T - Left GUI
+#define HRM_G HYPR_T(KC_G)   // G - Hyper
 
+#define HRM_M HYPR_T(KC_M)   // M - Hyper
 #define HRM_N RGUI_T(KC_N)    // N - Right GUI
 #define HRM_E RALT_T(KC_E)    // E - Right Alt
 #define HRM_I RCTL_T(KC_I)    // I - Right Ctrl
@@ -37,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_MINS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_BSLS,  HRM_A,   HRM_R,   HRM_S,   HRM_T,   KC_G,                               KC_M,    HRM_N,   HRM_E,   HRM_I,   HRM_O,    KC_QUOT,
+     KC_BSLS,  HRM_A,   HRM_R,   HRM_S,   HRM_T,   HRM_G,                              HRM_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O,    KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SCRN_SHOT,         KC_HYPR,  KC_K,    KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_RBRC,
+     KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SCRN_SHOT,         _______,  KC_K,    KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_ESC,  UPR_ENT, KC_LSFT,                   KC_BSPC, UPR_SPC, KC_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -52,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       RM_TOGG, _______, _______, _______, _______, _______,                            KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      RM_NEXT, _______, _______, _______, _______,  _______,                           KC_LEFT, KC_DOWN, KC_UP  ,KC_RIGHT, _______, _______,
+      _______, _______, _______, _______, _______,  _______,                           KC_LEFT, KC_DOWN, KC_UP  ,KC_RIGHT, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______,  _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
+     _______, _______,  _______, _______, _______, _______, _______,          _______, _______,TAB_PREV,TAB_NEXT, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
