@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _COLEMAK,
+    _QWERTY,
     _NAV,
     _SYM,
     _NUM,
@@ -39,28 +39,29 @@ enum keycodes {
 #define SYM_SPC LT(_SYM, KC_SPC)  // Tap for Space, hold for SYM
 #define NUM_BCK LT(_NUM, KC_BSPC) // Tap for BckSp, hold for NUM
 #define NAV_ENT LT(_NAV, KC_ENT)  // Tap for BckSp, hold for NAV
+#define CTL_ESC LCTL_T(KC_ESC)    // Tap for Esc, hold for Ctrl
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    /* Colemak
+    /* QWERTY
      * ,-----------------------------------------------------------------------------------.
-     * |   1  |   2  |   3  |   4  |   5  |      |      |   6  |   7  |   8  |   9  |   0  |
+     * |   ~  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   Q  |   W  |   F  |   P  |   B  |      |      |   J  |   L  |   U  |   Y  |   ;  |
+     * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bspc |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   A  |   R  |   S  |   T  |   G  |      |      |   M  |   N  |   E  |   I  |   O  |
+     * |Esc/^ |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   Z  |   X  |   C  |   D  |   V  |      |      |   K  |   H  |   ,  |   .  |   /  |
+     * | Shft |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  | Shft |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Ctrl | Alt  | GUI  |Lower |      |      |      |      |Raise | Left | Down |  Up  |
+     * | Ctrl | Alt  | GUI  |      | NAV  |      | SYM  | Left | Down |  Up  |      | Right|
      * `-----------------------------------------------------------------------------------'
      */
-    [_COLEMAK] = LAYOUT(
-        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    _______, _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
-        KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    _______, _______, KC_M,    KC_N,    KC_E,    KC_I,    KC_O,
-        KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    _______, _______, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,
-        KC_LCTL, KC_LALT, KC_LGUI, _______, NAV_ENT, _______, _______, SYM_SPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT
+    [_QWERTY] = LAYOUT(
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+        CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        KC_LCTL, KC_LALT, KC_LGUI, _______, NAV_ENT, _______, SYM_SPC, KC_LEFT, KC_DOWN, KC_UP,   _______, KC_RIGHT
     ),
 
     /* Lower
@@ -154,9 +155,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case COLEMAK:
+        case QWERTY:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK);
+                set_single_persistent_default_layer(_QWERTY);
             }
             return false;
     }
